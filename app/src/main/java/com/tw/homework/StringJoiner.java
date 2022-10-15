@@ -1,5 +1,7 @@
 package com.tw.homework;
 
+import com.google.common.base.Joiner;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -16,8 +18,8 @@ public class StringJoiner {
         if (input == null) {
             return "";
         }
-        return input.stream()
-                .filter(i -> !Objects.isNull(i))
-                .collect(Collectors.joining(","));
+
+        Joiner joiner = Joiner.on(',').skipNulls();
+        return joiner.join(input);
     }
 }
